@@ -55,6 +55,7 @@ if cuan.lower() == "si":
     else:
         print("Lo sentimos, no te encontramos en nuestra base de datos ˙◠˙")
 elif cuan.lower() == "no":
+    print("ദ്ദി˙ ᴗ ˙ )")
     pass
 else:
     print("Por favor ingresar elemento valido")
