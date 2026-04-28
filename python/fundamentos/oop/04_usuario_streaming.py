@@ -17,7 +17,7 @@ class UsuarioStreaming:
 
     def ver_contenido(self, titulo):
         if titulo in self.lista_reproduccion:
-            print(f"▶ Reproducendo {titulo}")
+            print(f"▶ Reproducendo {titulo} 〜⁠(⁠꒪⁠꒳⁠꒪⁠)⁠〜")
         else:
             new = input(f"Deseas ingresar {titulo} a la lista de reproducción?(si/no):_")
             if new.lower() == "si":
