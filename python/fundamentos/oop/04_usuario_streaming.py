@@ -19,7 +19,7 @@ class UsuarioStreaming:
         if titulo in self.lista_reproduccion:
             print(f"▶ Reproducendo {titulo} 〜⁠(⁠꒪⁠꒳⁠꒪⁠)⁠〜")
         else:
-            new = input(f"Deseas ingresar {titulo} a la lista de reproducción?(si/no):_")
+            new = input(f"El titulo: {titulo} no se ha encontrado, \n deseas añadirlo a la lista de reproducción?(si/no):_")
             if new.lower() == "si":
                 self.lista_reproduccion.append(titulo)
             elif new.lower() == "no":
