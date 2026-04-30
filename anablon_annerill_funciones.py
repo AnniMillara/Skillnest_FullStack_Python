@@ -28,7 +28,7 @@ def cadena(oka):
             tildes += 1
         else:
             pass
-    return f'El  texto tiene {vocal + tildes} vocales, las cuales {tildes} llevan tildes'
+    return f'El  texto tiene {vocal + tildes} vocales, de las cuales {tildes} llevan tildes'
 
 # Reciba una lista de nombres y muestre únicamente aquellos que tengan más de 5 letras.
 def nombre(cadena):
@@ -115,47 +115,100 @@ print("Bienvenido Python!! Que deseas ver hoy?")
 
 while not sueño:
     inp = int(input("\nPor favor elegir ejercicio(1 - 10, 0 = salir):_"))
-    
+
+# EJERCICIO UNO
     if inp == 1:
         limpiar_consola()
         print("LLevando al ejercicio uno \n ❝ Mayor y menor ❞")
-        print(menorMayor([100, -244, 33, 4]))
+        arreglo = []
+        put = int(input("Cuantos numeros deseas ingresar?:_"))
+        for i in range(put):
+            num = int(input("≫"))
+            arreglo.append(num)
+        print(menorMayor(arreglo))
+# EJERCICIO DOS
     elif inp == 2:
         limpiar_consola()
         print("LLevando al ejercicio dos \n ❝ Cantidad de vocales ❞")
-        print(cadena("Uso de funciones con parámetros"))
+        text = input("Qué vas a escribir hoy?:_")
+        print(cadena(text))
+# EJERCICIO TRES
     elif inp == 3:
         limpiar_consola()
         print("LLevando al ejercicio tres \n ❝ Nombres con mas de 5 Letras ❞")
-        print(nombre(["melisa", "alice", "pan", "isi", "okokoko"]))
+        arreglo = []
+        put = int(input("Cuantos nombres deseas ingresar?:_"))
+        for i in range(put):
+            nombres = input("≫")
+            arreglo.append(nombres)
+        print(nombre(arreglo))
+# EJERCICIO CUATRO
     elif inp == 4:
         limpiar_consola()
         print("LLevando al ejercicio cuatro \n ❝ Notas y promedios ❞")
-        print(decimales([6.5, 4, 3.5, 7, 2.4]))
+        arreglo = []
+        put = int(input("Cuantas notas deseas ingresar?:_"))
+        for i in range(put):
+            num = float(input("≫"))
+            arreglo.append(num)
+        print(decimales(arreglo))
+# EJERCICIO CINCO
     elif inp == 5:
         limpiar_consola()
         print("LLevando al ejercicio cinco \n ❝ Productos con descuentos ❞")
-        print(productos([10000, 44000, 330, 450]))
+        arreglo = []
+        put = int(input("Cuantas vale tu producto?:_"))
+        for i in range(put):
+            num = int(input("≫"))
+            arreglo.append(num)
+        print(productos(arreglo))
+# EJERCICIO SEIS
     elif inp == 6:
         limpiar_consola()
         print("LLevando al ejercicio seis \n ❝ Par o Impar ❞")
-        print(im("okaoka"))
+        numero = int(input("Ingresa un numero para saber si es par o impar:_"))
+        print(im(numero))
+# EJERCICIO SIETE
     elif inp == 7:
         limpiar_consola()
         print("LLevando al ejercicio siete \n ❝ Mayores de edad ❞")
-        print(edades([10, 24, 33, 14]))
+        arreglo = []
+        put = int(input("Ingresar edades:_"))
+        for i in range(put):
+            num = int(input("≫"))
+            arreglo.append(num)
+        print(edades(arreglo))
     elif inp == 8:
+# EJERCICIO OCHO
         limpiar_consola()
         print("LLevando al ejercicio ocho \n ❝ Cuantas veces aparece una palabra ❞")
-        print(palabras(["manzana", "pera", "platano", "oro", "brocoli", "manzana", "pera"]))
+        arreglo = []
+        put = int(input("Cuantos elementos deseas ingresar?:_"))
+        for i in range(put):
+            cosa = input("≫")
+            arreglo.append(cosa)
+        print(palabras(arreglo))
     elif inp == 9:
+# EJERCICIO NUEVE
         limpiar_consola()
         print("LLevando al ejercicio nueve \n ❝ Discriminadores de negativos ❞")
-        print(exclusion([100, -244, 33, 4]))
+        arreglo = []
+        put = int(input("Cuantos números vas a ingresar?:_"))
+        for i in range(put):
+            num = int(input("≫"))
+            arreglo.append(num)
+        print(exclusion(arreglo))
+# EJERCICIO DIEZ
     elif inp == 10:
         limpiar_consola()
         print("LLevando al ejercicio diez \n ❝ Stock ❞")
-        print(stockcio({"manzana" : 9, "pera" : 1, "platano" : 87, "oro" : 3, "brocoli" : 40}))
+        diccionario = {}
+        put = int(input("Cuantos elementos vas a ingresar?:_"))
+        for i in range(put):
+            clave = input("Ingresa elemnto:_")
+            valor = int(input("Ingresa valor:_"))
+            diccionario[clave] = valor
+        print(stockcio(diccionario))
     elif inp == 0:
         limpiar_consola()
         print("Saliendo𓍯𓂃𓏧♡")
