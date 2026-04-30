@@ -45,14 +45,13 @@ def nombre(cadena):
 def decimales(notas):
     prom = 0
     for i in range(len(notas)):
-        prom += notas[i]
-        if notas[i] >= 4.0 and notas[i] <= 7.0:
-            print(f"➢ El estudiante {i + 1} pasa con un {notas[i]}")
-        elif notas[i] < 4.0 and notas[i] >= 1.0:
-            print(f"➢ El estudiante {i + 1} lamentablemente no pasa con un {notas[i]} ☹")
-        else:
-            print("Aqual valor no es válido...")
-    print(f"El promedio de las notas es de {prom / (len(notas)+1)}")
+            prom += notas[i]
+            
+    promedio = prom / (len(notas))
+    if promedio >= 4.0 and promedio <= 7.0:
+        print(f"➢ El estudiante pasa con un promedio de {promedio}")
+    elif promedio < 4.0 and promedio >= 1.0:
+        print(f"➢ El estudiante lamentablemente no pasa con un promedio de {promedio} ☹")
 
 # Reciba una lista de precios de productos y aplique un descuento del 10%, mostrando el valor original y el nuevo valor.
 def desc(num):
