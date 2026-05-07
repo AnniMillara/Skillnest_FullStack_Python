@@ -40,11 +40,13 @@ class estudiante:
 ## Creacion de objetos (instancias)
 e1 = estudiante("Donovan", 4.0)
 e2 = estudiante("Randy", 6.7)
+e3 = estudiante("elisa", 2.1)
 
 # Usos de metodos de instancias
 print("\n⏔⏔ Métodos de instancias ⏔⏔")
 e1.mostrar_info() ## <= mostrar info de un estudiante
 e2.mostrar_info()
+e3.mostrar_info()
 
 # Usos de metodos de clase
 print("\n⏔⏔ Atributo de clase ⏔⏔")
@@ -56,6 +58,8 @@ print("\n⏔⏔ Método de clase ⏔⏔")
 estudiante.cambiar_colegio("Nuestro mundo")
 print(e1.colegio) ## <= mostrar colegio de un estudiante
 print(e2.colegio)
+e3.cambiar_colegio("vvh")
+print(e3.colegio)
 
 # Contar estudiantes
 print("\n⏔⏔ contar estudiantes ⏔⏔")
@@ -63,8 +67,12 @@ print(f"Total estudiantes : {estudiante.cantidad_estudiantes()}")
 
 # Uso de metodo estatico
 print("\n⏔⏔ Método estatico ⏔⏔")
-print(e1.colegio) ## <= mostrar colegio de un estudiante
-print(e2.colegio)
+print(f"{e1.nombre} aprueba?")
+print(estudiante.aprobar(e1.nota))
+print(f"{e2.nombre} aprueba?")
+print(estudiante.aprobar(e2.nota))
+print(f"{e3.nombre} aprueba?")
+print(estudiante.aprobar(e3.nota))
 
 ## Función repaso
 ## Crear función que valide usuario y contraseña
