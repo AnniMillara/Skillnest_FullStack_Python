@@ -1,7 +1,6 @@
 import os
 def limpiar_consola():
     os.system('cls')
-    
 ## Define la clase SuscripcionStreaming, que debe incluir:
 
 # Atributos:
