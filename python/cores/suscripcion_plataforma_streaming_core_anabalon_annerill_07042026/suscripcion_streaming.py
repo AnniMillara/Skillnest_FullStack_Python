@@ -34,13 +34,13 @@ class SuscripcionStreaming:
     def realizar_pago(self, monto):
         if self.tipo_suscripcion == "Gratis":
                 print(f"Que quieres pagar si tu suscripcion es gratis?!")
-                print(f"Tu sueldo: ${monto} fue recuperado...")
+                print(f"Tu sueldo: ${monto:.2f} fue recuperado...") # :.2f => Muestra dos decimales más con el numero
         
         if self.saldo_pendiente == 0 or monto >= self.costo_mensual:
             print(f"Muchas gracias por mantenerte en nuestra plataforma!!")
             self.puede_ver = True
         elif monto < self.costo_mensual:
-            print(f"Pagaste: ${monto} pero debes de pagar: ${self.costo_mensual} minimo...")
+            print(f"Pagaste: ${monto:.2f} pero debes de pagar: ${self.costo_mensual:.2f} minimo...")
             self.puede_ver = False
             self.saldo_pendiente -= monto
     
@@ -52,7 +52,7 @@ class SuscripcionStreaming:
         if self.tipo_suscripcion != "Gratis" and self.puede_ver:
             print("Por favor disfruta de nuestro contenido exclusivo como tu quieras!!")
         elif not self.puede_ver:
-            print(f"Lo sentimos pero debes de pagar tu suscripcion...")
+            print(f"Lo sentimos pero debes de pagar el minimo tu suscripcion...")
         elif self.tipo_suscripcion == "Gratis":
             print(f"Lo sentimos tu suscripcion es de tipo {self.tipo_suscripcion}")
 
@@ -69,9 +69,11 @@ def ejercicio_uno():
         usuarios[user - 1].realizar_pago(inp)
 
 def ejercicio_dos():
-    sus = input("Por favor ingresar nueva suscripción:\n")
-    if sus != "":
+    sus = input("Por favor ingresar nueva suscripción (Con mayuscula al inicio):\n")
+    if sus != "" and sus == "Gratis" or sus == "Estándar" or sus == "Premium":
         usuarios[user - 1].cambiar_suscripcion(sus)
+    else:
+        print("Selección no válida")
 
 # usuarios --------------------------------------------------------------------------------------------------------------------------------------------------------
 user1 = SuscripcionStreaming("milkyway", 27000, "Estándar")
