@@ -47,7 +47,7 @@ class CafeteriaCliente:
     
     @staticmethod
     def validar_membresia(tipo):
-        membresias_validas = ["Bronce", "Plata", "Oro"]
+        membresias_validas = ["Bronce", "Plata", "Oro"] # <-- arreglo
         for i in range(len(membresias_validas)):
             if membresias_validas[i].lower() == tipo.lower():
                 return True
@@ -55,12 +55,12 @@ class CafeteriaCliente:
 
 user1 = CafeteriaCliente("Patty Warren")
 user2 = CafeteriaCliente("Sergius Huang")
-user3 = CafeteriaCliente("Ian Lefipan")
+user3 = CafeteriaCliente("Ian  ")
 
 print(user1.realizar_compra(29000))
 print(user1.pagar_saldo(2900))
 
 print(f"Hay un total de: {CafeteriaCliente.mostrar_total_clientes()} clientes\n")
 
-print(f"El usuario es: {user2.validar_membresia("Plata")}")
+print(f"El usuario es: {user2.validar_membresia("PLATA")}")
 print(f"El usuario es: {user3.validar_membresia("ComóPerdón")}")
