@@ -1,0 +1,28 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.container {
+    padding-top: 100px;
+    margin: 0 auto;
+    width: 1000px;
+    display: flex;
+    justify-content: space-around;
+}
+
+.row{
+    width: 200px;
+    text-align: center;
+}
+
+input {
+    width: 100px;
+    height: 30px;
+}
+.regs {
+    display: flex;
+    justify-content: space-between;
+    padding: 3px;
+}
