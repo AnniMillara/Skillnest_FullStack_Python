@@ -4,6 +4,10 @@
     box-sizing: border-box;
 }
 
+body {
+    font-family: "Cause", cursive;
+}
+
 .container {
     padding-top: 100px;
     margin: 0 auto;
@@ -12,17 +16,40 @@
     justify-content: space-around;
 }
 
-.row{
-    width: 200px;
+.row {
+    width: 260px;
     text-align: center;
+    /* 1. Propiedad que cambia de manera gradual */
+    transition-property: transform;
+    /* 2. Duración del efecto */
+    transition-duration: 0.5s;
+}
+
+.row:hover {
+    transform: scale(1.05);
 }
 
 input {
     width: 100px;
     height: 30px;
+    padding: 10px;
 }
+
 .regs {
     display: flex;
     justify-content: space-between;
-    padding: 3px;
+    margin: 10px;
+}
+
+.titulo {
+    font-size: 34px;
+    margin-bottom: 10px;
+}
+
+.enviar {
+    padding: 5px 10px;
+    border: 2px solid black;
+    box-shadow: 3px 3px 0px black;
+    font-family: "Cause", cursive;
+    background-color: #ffff;
 }
