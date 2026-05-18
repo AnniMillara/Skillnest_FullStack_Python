@@ -17,8 +17,10 @@ body {
 }
 
 .row {
-    width: 260px;
+    width: 300px;
     text-align: center;
+    border-radius: 20px;
+    padding: 20px;
     /* 1. Propiedad que cambia de manera gradual */
     transition-property: transform;
     /* 2. Duración del efecto */
@@ -27,6 +29,7 @@ body {
 
 .row:hover {
     transform: scale(1.05);
+    background-color: #dfdfdf;
 }
 
 input {
@@ -39,11 +42,12 @@ input {
     display: flex;
     justify-content: space-between;
     margin: 10px;
+    align-items: center;
 }
 
 .titulo {
     font-size: 34px;
-    margin-bottom: 10px;
+    margin-bottom: 15px;
 }
 
 .enviar {
@@ -52,4 +56,39 @@ input {
     box-shadow: 3px 3px 0px black;
     font-family: "Cause", cursive;
     background-color: #ffff;
+    /* 1. Propiedad que cambia de manera gradual */
+    transition-property: transform;
+    /* 2. Duración del efecto */
+    transition-duration: 0.5s;
+}
+
+.enviar:hover {
+    transform: scale(1.07);
+    border: 2px solid #616161;
+    box-shadow: 3px 3px 0px#868686;
+    color: #868686;
+}
+
+/* css para dashboard-admiiiin :(*/
+table {
+    width: 100%;
+    max-width: 600px;
+    border-collapse: collapse;
+    /* Une los bordes de las celdas */
+    margin: 20px auto;
+}
+
+th {
+    background-color: #CCCCCC;
+    text-align: center;
+    border: 2px solid #000000;
+}
+
+td {
+    text-align: center;
+    border: 2px solid #000000;
+}
+
+.botones {
+    display: flex;
 }
