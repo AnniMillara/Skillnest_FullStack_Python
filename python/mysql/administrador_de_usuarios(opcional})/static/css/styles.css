@@ -17,7 +17,6 @@ body {
 }
 
 .row {
-    width: 300px;
     text-align: center;
     border-radius: 20px;
     padding: 20px;
@@ -38,9 +37,25 @@ input {
     padding: 10px;
 }
 
+.largo {
+    width: 150px;
+    height: 30px;
+    padding: 10px;
+}
+
+select {
+    width: 100px;
+    height: 30px;
+    text-align: center;
+}
+
+label {
+    width: 150px;
+    display: flex;
+}
+
 .regs {
     display: flex;
-    justify-content: space-between;
     margin: 10px;
     align-items: center;
 }
@@ -78,17 +93,70 @@ table {
     margin: 20px auto;
 }
 
-th {
-    background-color: #CCCCCC;
-    text-align: center;
+table {
     border: 2px solid #000000;
 }
 
+th {
+    background-color: #CCCCCC;
+}
+
+th,
 td {
     text-align: center;
-    border: 2px solid #000000;
+    border-left: 2px solid black;
+}
+
+.fila2 {
+    background-color: #EEEEEE;
 }
 
 .botones {
     display: flex;
+    justify-content: space-between;
+    margin: 10px;
+}
+
+.btn {
+    font-size: 25px;
+    margin: 0 auto;
+}
+
+/* EXTRAS por andreaaaaaaaaaaaaaaaaaaaa */
+nav, .mensajes{
+    padding: 20px;
+    padding-bottom: 0px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+a {
+    color: #4D8EE8;
+}
+
+h2 {
+    padding: 10px 0px;
+}
+
+.textoo {
+    margin-top: 10px;
+    display: flex;
+    gap: 20px;
+}
+
+.textoo input {
+    flex-grow: 1;
+}
+
+.comentario {
+    width: 80%;
+}
+
+.container-dos {
+    padding-top: 10px;
+    margin: 0 auto;
+    width: 1000px;
+    display: flex;
+    justify-content: space-around;
 }
