@@ -47,6 +47,7 @@ select {
     width: 100px;
     height: 30px;
     text-align: center;
+    font-family: "Cause", cursive;
 }
 
 label {
@@ -63,6 +64,11 @@ label {
 .titulo {
     font-size: 34px;
     margin-bottom: 15px;
+}
+
+.btn-text {
+    color: #000000;
+    text-decoration: none;
 }
 
 .enviar {
