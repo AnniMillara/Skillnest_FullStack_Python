@@ -137,6 +137,24 @@ nav, .mensajes{
     gap: 20px;
 }
 
+.nav-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 2px dotted #616161
+}
+
+.nav-btns {
+    display: flex;
+    gap: 10px;
+}
+
+.btn-nav {
+    padding: 2px 30px;
+    font-size: 20px;
+
+}
+
 a {
     color: #4D8EE8;
 }
