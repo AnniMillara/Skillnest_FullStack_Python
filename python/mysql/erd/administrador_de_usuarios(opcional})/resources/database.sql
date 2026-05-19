@@ -85,7 +85,6 @@ CREATE TABLE IF NOT EXISTS `sistema_mensajes`.`usuarios` (
     UNIQUE INDEX `id_usuario` (`id_usuario` ASC) VISIBLE,
     UNIQUE INDEX `nombre_usuario` (`nombre_usuario` ASC) VISIBLE,
     UNIQUE INDEX `email_usuario` (`email_usuario` ASC) VISIBLE,
-    UNIQUE INDEX `password_hash` (`password_hash` ASC) VISIBLE,
     INDEX `rol_usuario_id` (`rol_usuario_id` ASC) VISIBLE,
     INDEX `created_by` (`created_by` ASC) VISIBLE,
     CONSTRAINT `usuarios_ibfk_1` FOREIGN KEY (`rol_usuario_id`) REFERENCES `sistema_mensajes`.`roles_usuarios` (`id_rol_usuario`),
