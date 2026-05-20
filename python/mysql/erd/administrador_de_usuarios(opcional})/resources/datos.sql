@@ -47,3 +47,63 @@ VALUES
     ('Me gustaría ir a cenar, ¿a qué hora te parece bien?', 2, 3, 5, 5),
     ('No he visto la película, pero me la voy a buscar, gracias.', 2, 4, 1, 1),
     ('Me encantaría recomendarte un lugar para tus vacaciones, ¿qué tipo de lugar estás buscando?', 2, 5, 3, 3);
+
+-- -------------
+-- VER TABLAS --
+-- -------------
+
+USE `sistema_mensajes`;
+
+SELECT * FROM roles_usuarios;
+SELECT * FROM estado_comentarios;
+SELECT * FROM estado_mensajes;
+SELECT * FROM usuarios;
+SELECT * FROM mensajes;
+SELECT * FROM comentarios;
+
+-- -----------------------
+-- CONSULTAS ESPECIALES --
+-- -----------------------
+
+-- consultas simples con condición --
+-- WHERE en MySQL ﹕
+-- Mostrar mensajes donde el remitente sea el elegido ⮟
+SELECT texto_mensaje, remitente_mensaje_id
+FROM mensajes
+WHERE remitente_mensaje_id = 3;
+
+-- Mostrar usuarios que estan activos (del = 0) ⮟ 
+SELECT nombre_usuario, email_usuario, rol_usuario_id
+FROM usuarios
+WHERE deleted = 0;
+
+-- Borra un usuario logicamente ⮟
+UPDATE usuarios
+SET deleted = 1 -- Se recupera colocando 0 de nuevo ˙ᵕ˙
+WHERE id_usuario = 2;
+
+-- --------
+-- TAREA --
+-- --------
+-- Mostrar roles de usuario (nombre, descripción)
+SELECT nombre_usuario, descripcion_rol
+FROM usuarios, roles_usuarios
+WHERE deleted = 0;
+
+-- Elimina dos roles de usuario
+UPDATE roles_usuarios
+SET deleted = 1
+WHERE id_rol_usuario = 2;
+
+UPDATE roles_usuarios
+SET deleted = 1 -- Se recupera colocando 0 de nuevo ˙ᵕ˙
+WHERE id_rol_usuario = 3;
+
+-- Recupera un rol de usuario
+UPDATE roles_usuarios
+SET deleted = 0
+WHERE id_rol_usuario = 2;
+
+SELECT nombre_rol, descripcion_rol
+FROM roles_usuarios
+WHERE deleted = 0;
