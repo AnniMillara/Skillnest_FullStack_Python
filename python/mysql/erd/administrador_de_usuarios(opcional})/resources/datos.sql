@@ -30,7 +30,7 @@ VALUES
     ('Constanza', 'PerroFeliz@gmail.com', 'MarAzul99', 2, 1),
     ('Benjamin', 'benja6547@gmail.com', 'PanConQueso', 1, 1);
 
--- Insertar mensajes (corregido)
+-- Insertar mensajes
 INSERT INTO `mensajes` (`texto_mensaje`, `estado_mensaje_id`, `remitente_mensaje_id`, `destinatario_mensaje_id`, `created_by`)
 VALUES
     ('Hola, ¿cómo estás? Espero que tengas un buen día.', 1, 2, 3, 2),
@@ -39,7 +39,7 @@ VALUES
     ('Acabo de ver una película increíble, te la recomiendo mucho.', 3, 2, 1, 2),
     ('Estoy pensando en hacer un viaje para las vacaciones, ¿tú tienes algún lugar en mente que me recomiendes?', 3, 4, 3, 4);
 
--- Insertar comentarios (corregido)
+-- Insertar comentarios
 INSERT INTO `comentarios` (`texto_comentario`, `estado_comentario_id`, `mensaje_id`, `usuario_id`, `created_by`)
 VALUES
     ('Me encantó la película, gracias por la recomendación.', 2, 4, 2, 2),
