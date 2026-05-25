@@ -91,21 +91,17 @@ libro1.autor = autor1
 libro2.autor = autor2
 libro3.autor = autor3
 
-print(libro1.autor.informacion())
-
 # Bucle while ========================================================================================================================================================================================================================
-sueño = True
+seguir = True
 
-# Lista de usuarios
 usuarios = [userUno, userDos, userTres]
 autores = [autor1, autor2, autor3]
 libros = [libro1, libro2, libro3]
 
-# Seleccionar usuario
 user = int(input("Podrías ingresar tu llave de usuario por favor? (1-3): ")) - 1
 usuario_actual = usuarios[user]
 
-while sueño:
+while seguir:
     print("\n1. Mostrar mis datos")
     print("2. Cambiar mi correo")
     print("3. Ver autor de un libro")
@@ -113,7 +109,6 @@ while sueño:
     print("0. Salir")
     
     opcion = int(input("Elige una opción: "))
-    
     if opcion == 1:
         limpiar_consola()
         print(usuario_actual.mostrar_datos())
@@ -132,6 +127,6 @@ while sueño:
     elif opcion == 0:
         limpiar_consola()
         print("^._.^ฅ ¡Hasta luego!")
-        sueño = False
+        seguir = False
     else:
         print("Opción inválida")
