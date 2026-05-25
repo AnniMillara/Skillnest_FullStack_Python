@@ -1,3 +1,7 @@
+import os
+def limpiar_consola():
+    os.system('cls')
+
 class usuario:
     def __init__(self, nombre, correo, telefono):
         self.nombre = nombre
@@ -37,10 +41,11 @@ class Libro:
         Libro.libros.append(self)
     
     @classmethod
-    def buscar_libro_por_titulo(cls, titulo):
+    def buscar_libro_por_titulo(cls, titulo_buscar):
+        titulo_buscar = titulo_buscar.lower()  # Normaliza: minúsculas y sin espacios extra
         for libro in cls.libros:
-            if libro.titulo == titulo:
-                return f"Disponible: {libro.disponibilidad}"
+            if titulo_buscar in libro.titulo.lower():   # Busca coincidencia parcial
+                return f"Título: {libro.titulo}\nDisponible: {libro.disponibilidad}"
         return "Libro no encontrado"
 
 class genero_libro:
@@ -87,3 +92,46 @@ libro2.autor = autor2
 libro3.autor = autor3
 
 print(libro1.autor.informacion())
+
+# Bucle while ========================================================================================================================================================================================================================
+sueño = True
+
+# Lista de usuarios
+usuarios = [userUno, userDos, userTres]
+autores = [autor1, autor2, autor3]
+libros = [libro1, libro2, libro3]
+
+# Seleccionar usuario
+user = int(input("Podrías ingresar tu llave de usuario por favor? (1-3): ")) - 1
+usuario_actual = usuarios[user]
+
+while sueño:
+    print("\n1. Mostrar mis datos")
+    print("2. Cambiar mi correo")
+    print("3. Ver autor de un libro")
+    print("4. Ver disponibilidad de un libro por título")
+    print("0. Salir")
+    
+    opcion = int(input("Elige una opción: "))
+    
+    if opcion == 1:
+        limpiar_consola()
+        print(usuario_actual.mostrar_datos())
+    elif opcion == 2:
+        limpiar_consola()
+        email_nuevo = input("Por favor ingresar nuevo email: ")
+        print(usuario_actual.cambiar_correo(email_nuevo))
+    elif opcion == 3:
+        limpiar_consola()
+        buscar = int(input("Por favor ingresar codigo autor(1-3): ")) -1
+        print(autores[buscar].informacion())
+    elif opcion == 4:
+        limpiar_consola()
+        nombre = input("Ingresa el nombre del libro: ")
+        print(Libro.buscar_libro_por_titulo(nombre))
+    elif opcion == 0:
+        limpiar_consola()
+        print("^._.^ฅ ¡Hasta luego!")
+        sueño = False
+    else:
+        print("Opción inválida")
