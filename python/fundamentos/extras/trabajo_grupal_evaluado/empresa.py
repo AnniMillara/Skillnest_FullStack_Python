@@ -1,8 +1,9 @@
-import os
-def limpiar_consola():
+import os # --> ejecuta comandos en consola
+def limpiar_consola(): # limpian consola del terminal
     os.system('cls')
 
 class usuario:
+    # instancias
     def __init__(self, nombre, correo, telefono):
         self.nombre = nombre
         self.correo = correo
@@ -42,24 +43,11 @@ class Libro:
     
     @classmethod
     def buscar_libro_por_titulo(cls, titulo_buscar):
-        titulo_buscar = titulo_buscar.lower()  # Normaliza: minúsculas y sin espacios extra
+        titulo_buscar = titulo_buscar.lower()  # minúsculas 
         for libro in cls.libros:
-            if titulo_buscar in libro.titulo.lower():   # Busca coincidencia parcial
+            if titulo_buscar in libro.titulo.lower():   # Busca coincidencia
                 return f"Título: {libro.titulo}\nDisponible: {libro.disponibilidad}"
         return "Libro no encontrado"
-
-class genero_libro:
-    def __init__(self, nombre_genero, descripcion):
-        self.nombre = nombre_genero
-        self.descripcion = descripcion 
-    
-    def mostrar_genero(self):
-        return f"Género: {self.nombre}\nDescripción: {self.descripcion}\n"
-
-class estado_prestamos:
-    def __init__(self, nombre_estado, descripcion_estado):
-        self.nombre_estado = nombre_estado
-        self. descripcion_estado =  descripcion_estado
 
 class prestamo:
     def __init__(self, fecha_prestamo, fecha_devolucion, fecha_limite):
@@ -92,6 +80,7 @@ libro2.autor = autor2
 libro3.autor = autor3
 
 # Bucle while ========================================================================================================================================================================================================================
+print("Bienvenido usuario!! ✮⋆˙")
 seguir = True
 
 usuarios = [userUno, userDos, userTres]
