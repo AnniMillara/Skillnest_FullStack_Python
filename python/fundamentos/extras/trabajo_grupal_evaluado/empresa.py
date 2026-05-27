@@ -49,7 +49,7 @@ class Libro:
         return "Libro no encontrado"
 
 class prestamo:
-    def __init__(self, fecha_prestamo, fecha_devolucion, fecha_limite):
+    def __init__(self, fecha_prestamo, fecha_devolucion, fecha_limite): # parametros obligatorios
         self.fecha_prestamo = fecha_prestamo
         self.fecha_devolucion = fecha_devolucion
         self.fecha_limite = fecha_limite
@@ -130,7 +130,7 @@ while seguir:
     elif opcion == 5:
         limpiar_consola()
         nombre = input("Ingresa el nombre del libro: ")
-        nuevo_prestamo = prestamo(None, None, None)  # Valores temporales que serán reemplazados
+        nuevo_prestamo = prestamo(None, None, None) # Valores temporales que serán reemplazados
         print(nuevo_prestamo.registrar_prestamo(nombre, usuario_actual, libros))
     elif opcion == 0:
         limpiar_consola()
