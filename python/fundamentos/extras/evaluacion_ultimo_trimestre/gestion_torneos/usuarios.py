@@ -11,9 +11,7 @@ class usuario:
         return (f"Nombre: {self.nombre_completo}\n"
                 f"Username: {self.username}\n"
                 f"Email: {self.email}\n"
-                f"Edad: {self.edad}\n"
-                f"{self.ciudad.mostrar_ciudad_completa()}\n"
-                f"{self.tipo_usuario.mostrar_info()}")
+                f"Edad: {self.edad}\n")
     
     def cambiar_email(self, nuevo_email):  # Método de instancia
         if "@" in nuevo_email and "." in nuevo_email:
