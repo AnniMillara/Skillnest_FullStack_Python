@@ -26,3 +26,4 @@ class tipoUsuario:
 
 tipo1 = tipoUsuario("Jugador", "Participa activamente en torneos")
 tipo2 = tipoUsuario("Admin", "Organiza y supervisa torneos")
+
