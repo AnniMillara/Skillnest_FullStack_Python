@@ -11,7 +11,7 @@ class Conexion:
         a la base de datos.
         """
         conexion = mysql.connector.connect(
-            host="127.0.0.1",
+            host="localhost",
             user="root",
             password="1234",
             database="colegio"
