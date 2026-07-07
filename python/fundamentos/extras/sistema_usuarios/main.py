@@ -52,8 +52,10 @@ while continuar:
                     Usuarios.listar()
                 elif seleccion == 3:
                     limpiar_consola()
+                    Usuarios.buscar()
                 elif seleccion == 4:
                     limpiar_consola()
+                    Usuarios.modificar()
                 elif seleccion == 5:
                     limpiar_consola()
                 elif seleccion == 0:

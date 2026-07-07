@@ -19,7 +19,6 @@ class Usuarios:
             JOIN tipo_usuarios t ON u.tipo_usuario_id = t.id_tipo_usuario
             WHERE u.deleted = 0 AND u.username = %s AND u.contraseña = %s
         """
-        
         cursor.execute(sql, (username, contraseña))
         usuario = cursor.fetchone()
         
@@ -118,7 +117,7 @@ class Usuarios:
             print(f"{tipo[0]}. {tipo[1]} - {tipo[2]}")
         
         nombreU = input("Ingresar nombre de usuario:_").strip()
-        contraU = input("Ingresar nombre de usuario:_").strip()
+        contraU = input("Ingresar contraseña de usuario:_").strip()
         tipoU = int(input("Ingresar tipo de usuario:_"))
         
         if nombreU != "" and contraU != "":
@@ -127,3 +126,95 @@ class Usuarios:
         
         cursor.close()
         conexion.close()
+    
+    def buscar():
+        conexion = Conexion.conectar()
+        cursor = conexion.cursor()
+        
+        Usuarios.listar()
+        id_obj = int(input('Por favor ingresar id:_'))
+        sql = """
+        SELECT id_usuario, username, contraseña
+        FROM usuarios 
+        WHERE deleted = 0 AND id_usuario = %s
+        """
+        cursor.execute(sql, (id_obj,)) # <-- la coma es importante
+        usuarioFind = cursor.fetchone()
+        if not usuarioFind:
+            print("\nEl usuario no existe...")
+            cursor.close()
+            conexion.close()
+            return None
+        else:
+            print(f'User: {usuarioFind[1]} ⧽ password: {usuarioFind[2]}')
+            cursor.close()
+            conexion.close()
+            return id_obj
+    
+    def modificar(self):
+        conexion = Conexion.conectar()
+        cursor = conexion.cursor()
+        
+        id_obj = Usuarios.buscar()
+        if id_obj is not None:
+            nombreU = input("Ingresar nuevo nombre de usuario:_").strip()
+            contraU = input("Ingresar nueva contraseña de usuario:_").strip()
+            tipoU = int(input("Ingresar nuevo tipo de usuario:_"))
+        
+            if nombreU != "" and contraU != "":
+                # Estructura de control: validacion nombre unico
+                sql = """
+                SELECT id_usuario
+                FROM usuarios
+                WHERE username = %s AND deleted = 0
+                """
+                cursor.execute(sql, (nombreU,))
+                if cursor.fetchone():
+                    print("\nEl nombre de usuario ya esta registrado.")
+                    cursor.close()
+                    conexion.close()
+                    return
+                #update 
+                sql = """
+                UPDATE usuarios 
+                SET username = %s, 
+                    contraseña = %s, 
+                    tipo_usuario_id = %s,
+                    created_by = %s,
+                    updated_by = %s
+                WHERE id_usuario = %s
+                """
+                cursor.execute(sql, (nombreU, contraU, tipoU, self.created_by, self.updated_by))
+                conexion.commit()
+                print("\nUsuario actualizado correctamente.")
+                
+                cursor.close()
+                conexion.close()
+                
+    def eliminar():
+        conexion = Conexion.conectar()
+        cursor = conexion.cursor()
+        
+        Usuarios.listar()
+        elim_obj = int(input('por favor ingresar usuario a eliminar:_'))
+        seg = input('Estas realmente seguro de tu desición??(S/N):_')
+        
+        if seg.lower() == 's':
+            sql = """
+                UPDATE usuarios 
+                SET deleted = 1
+                WHERE id_usuario = %s
+                """
+            cursor.execute(sql, (elim_obj,))
+            conexion.commit()
+            print("\nUsuario eliminado correctamente.")
+            
+            cursor.close()
+            conexion.close()
+        elif seg.lower() == 's':
+            print('okay')
+            cursor.close()
+            conexion.close()
+            return
+        else:
+            print('Por favor ingresar elemento válido...')
