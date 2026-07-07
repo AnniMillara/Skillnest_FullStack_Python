@@ -90,7 +90,7 @@ class Usuarios:
         
         # ahora lo weno
         sql = """
-        INSERT INTO usuarios (nombre_tipo, descripcion_tipo, created_by, updated_by)
+        INSERT INTO usuarios (username, contraseña, tipo_usuario_id, created_by, updated_by)
         VALUES (%s, %s, %s, %s, %s)
         """
         cursor.execute(sql, (self.username, self.contraseña, self.tipo_usuario, self.created_by, self.updated_by))
@@ -105,20 +105,23 @@ class Usuarios:
         conexion = Conexion.conectar()
         cursor = conexion.cursor()
         
-        nombreU = input("Ingresar nombre de usuario:_").strip()
-        contraU = input("Ingresar nombre de usuario:_").strip()
-        
         sql = """
-        SELECT t.id_tipo_usuario t.nombre_tipo, t.descripcion_tipo
-        FROM t tipo_usuarios
+        SELECT id_tipo_usuario, nombre_tipo, descripcion_tipo
+        FROM tipo_usuarios
         WHERE deleted = 0
         """
-        
         cursor.execute(sql)
+        tipos = cursor.fetchall()
+    
+        print("\n=== TIPOS DE USUARIO DISPONIBLES ===")
+        for tipo in tipos:
+            print(f"{tipo[0]}. {tipo[1]} - {tipo[2]}")
         
-        tipoU = int(input("Ingresar tipo de usuario:_")).strip()
+        nombreU = input("Ingresar nombre de usuario:_").strip()
+        contraU = input("Ingresar nombre de usuario:_").strip()
+        tipoU = int(input("Ingresar tipo de usuario:_"))
         
-        if nombreU != "" and contraU != "" and tipoU != "":
+        if nombreU != "" and contraU != "":
             usuario_obj = Usuarios(nombreU, contraU, tipoU)
             usuario_obj.guardar()
         
