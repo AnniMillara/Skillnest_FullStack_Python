@@ -46,8 +46,10 @@ while continuar:
                 
                 if seleccion == 1:
                     limpiar_consola()
+                    Usuarios.ingresar()
                 elif seleccion == 2:
                     limpiar_consola()
+                    Usuarios.listar()
                 elif seleccion == 3:
                     limpiar_consola()
                 elif seleccion == 4:
@@ -57,6 +59,7 @@ while continuar:
                 elif seleccion == 0:
                     limpiar_consola()
                     print('^._.^ฅ')
+                    seguir = False
                 else:
                     limpiar_consola()
                     print('Por favor ingresar un elemnto válido')
