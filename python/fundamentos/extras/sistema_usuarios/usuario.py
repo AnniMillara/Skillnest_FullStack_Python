@@ -26,17 +26,19 @@ class Usuarios:
         conexion.close()
         
         if usuario:
-            print('Verificación exitosa')
+            print('Verificacion exitosa')
             
             if usuario[3] == "Admin":
-                print(f'Bienvenido Administrador {usuario[1]}!!\nQué vas a ver hoy??')
+                print(f'Bienvenido Administrador {usuario[1]}!!\nQue vas a ver hoy??')
                 return True
             else:
-                print(f'Bienvenido Usuario {usuario[1]}!!\nQué vas a ver hoy??')
+                print(f'Bienvenido Usuario {usuario[1]}!!\nQue vas a ver hoy??')
                 return False
         else:
-            print('usuario u Contraseña no válidos')
+            print('usuario o Contraseña no validos')
+            return False
     
+    @staticmethod
     def listar():
         conexion = Conexion.conectar()
         cursor = conexion.cursor()
@@ -127,6 +129,7 @@ class Usuarios:
         cursor.close()
         conexion.close()
     
+    @staticmethod
     def buscar():
         conexion = Conexion.conectar()
         cursor = conexion.cursor()
@@ -138,7 +141,7 @@ class Usuarios:
         FROM usuarios 
         WHERE deleted = 0 AND id_usuario = %s
         """
-        cursor.execute(sql, (id_obj,)) # <-- la coma es importante
+        cursor.execute(sql, (id_obj,))
         usuarioFind = cursor.fetchone()
         if not usuarioFind:
             print("\nEl usuario no existe...")
@@ -146,12 +149,13 @@ class Usuarios:
             conexion.close()
             return None
         else:
-            print(f'User: {usuarioFind[1]} ⧽ password: {usuarioFind[2]}')
+            print(f'User: {usuarioFind[1]} | password: {usuarioFind[2]}')
             cursor.close()
             conexion.close()
             return id_obj
     
-    def modificar(self):
+    @staticmethod
+    def modificar():
         conexion = Conexion.conectar()
         cursor = conexion.cursor()
         
@@ -174,47 +178,51 @@ class Usuarios:
                     cursor.close()
                     conexion.close()
                     return
-                #update 
+                #update
                 sql = """
                 UPDATE usuarios 
                 SET username = %s, 
                     contraseña = %s, 
                     tipo_usuario_id = %s,
-                    created_by = %s,
                     updated_by = %s
                 WHERE id_usuario = %s
                 """
-                cursor.execute(sql, (nombreU, contraU, tipoU, self.created_by, self.updated_by))
+                cursor.execute(sql, (nombreU, contraU, tipoU, "system", id_obj))
                 conexion.commit()
                 print("\nUsuario actualizado correctamente.")
                 
                 cursor.close()
                 conexion.close()
-                
+    
+    @staticmethod
     def eliminar():
         conexion = Conexion.conectar()
         cursor = conexion.cursor()
         
         Usuarios.listar()
-        elim_obj = int(input('por favor ingresar usuario a eliminar:_'))
-        seg = input('Estas realmente seguro de tu desición??(S/N):_')
+        elim_obj = int(input('Por favor ingresar ID del usuario a eliminar:_'))
+        seg = input('¿Estas realmente seguro de tu decision? (S/N):_')
         
         if seg.lower() == 's':
             sql = """
                 UPDATE usuarios 
-                SET deleted = 1
+                SET deleted = 1,
+                    updated_by = %s
                 WHERE id_usuario = %s
                 """
-            cursor.execute(sql, (elim_obj,))
+            cursor.execute(sql, ("system", elim_obj))
             conexion.commit()
             print("\nUsuario eliminado correctamente.")
             
             cursor.close()
             conexion.close()
-        elif seg.lower() == 's':
-            print('okay')
+        elif seg.lower() == 'n':
+            print('Eliminacion cancelada')
             cursor.close()
             conexion.close()
             return
         else:
-            print('Por favor ingresar elemento válido...')
+            print('Por favor ingresar S o N...')
+            cursor.close()
+            conexion.close()
+            return
