@@ -29,10 +29,10 @@ class Usuarios:
             print('Verificacion exitosa')
             
             if usuario[3] == "Admin":
-                print(f'Bienvenido Administrador {usuario[1]}!!\nQue vas a ver hoy??')
+                print(f'Bienvenido usuario {usuario[3]}, {usuario[1]}!!\nQue vas a ver hoy??')
                 return True
             else:
-                print(f'Bienvenido Usuario {usuario[1]}!!\nQue vas a ver hoy??')
+                print(f'Bienvenido Usuario {usuario[3]}, {usuario[1]}!!\nQue vas a ver hoy??')
                 return False
         else:
             print('usuario o Contraseña no validos')
@@ -201,6 +201,20 @@ class Usuarios:
         
         Usuarios.listar()
         elim_obj = int(input('Por favor ingresar ID del usuario a eliminar:_'))
+        
+        sql = """
+        SELECT id_usuario
+        FROM usuarios 
+        WHERE deleted = 0 AND id_usuario = %s
+        """
+        cursor.execute(sql, (elim_obj,))
+        usuarioFind = cursor.fetchone()
+        if not usuarioFind:
+            print("\nEl usuario no existe...")
+            cursor.close()
+            conexion.close()
+            return
+        
         seg = input('¿Estas realmente seguro de tu decision? (S/N):_')
         
         if seg.lower() == 's':
