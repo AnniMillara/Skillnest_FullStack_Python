@@ -22,6 +22,9 @@ def mensj(pal, cant):
     return f'{pal} ' * cant
 
 # BONUS: Página de error personalizada si el usuario ingresa una ruta inexistente
+@app.errorhandler(404)
+def pagina_no_encontrada(error):
+    return "⚠️ Error 404 - Página no encontrada.", 404
 
 # Ejecuta el servidor
 if __name__ == "__main__":
