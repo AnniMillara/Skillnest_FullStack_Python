@@ -21,7 +21,15 @@ def jugador():
 
 @app.route("/institucion")
 def institucion():
-    return render_template("inst.html")
+    # Comentario de prueba #
+    return render_template("inst.html",
+                nombre= "",
+                apellido= "",
+                curso = "",
+                institucion= "",
+                anio= 2000,
+                es_docente = False,
+                tecnologias=["Python","Flask","HTML","CSS"])
 
 # BONUS: Página de error personalizada si el usuario ingresa una ruta inexistente
 @app.errorhandler(404)

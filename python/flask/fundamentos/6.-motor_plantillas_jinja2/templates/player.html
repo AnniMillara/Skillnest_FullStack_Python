@@ -4,17 +4,51 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <!-- bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+    <title>Flask.ᐟ</title>
 </head>
 
 <body>
-    <h1>{{ jugador }}</h1>
-    <p>Puntaje: {{ puntaje }}</p>
-    {% if lider %}
-    <p>🏆 Líder del Ranking</p>
-    {% else %}
-    <p>⚔⊹ ࣪ ˖ /•᷅•᷄\੭</p>
-    {% endif %}
+    <nav class="navbar bg-body-tertiary mb-5">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">
+                ╰┈➤ Bienvenido 
+                    {% if profesor %}
+                    <p class="card-text">Profesoor ☆</p>
+                    {% else %}
+                    <p class="card-text">Estudiantee ˎˊ˗</p>
+                    {% endif %} <!-- termina if -->
+            </a>
+        </div>
+    </nav>
+
+    <div class="container">
+        <div class="tarjs d-flex justify-content-between">
+            <div class="card" style="width: 18rem;">
+                <div class="card-body">
+                    <h5 class="card-title">Información</h5>
+                    <p class="card-text">Nombre(s) : {{nombre}}</p>
+                    <p class="card-text">Apellidos(s) : {{apellido}}</p>
+                    <p class="card-text">Curso : {{curso}}</p>
+                    <p class="card-text">Institución : {{institucion}}</p>
+                    <p class="card-text">Año : {{anio}}</p>
+                </div>
+            </div>
+
+            <div class="card" style="width: 18rem;">
+                <div class="card-body">
+                    <h5 class="card-title">For con arreglo</h5>
+                    <ul class="list-group">
+                        {% for tecnologia in tecnologias %} 
+                        <li  class="list-group-item">{{ tecnologia }}</li>
+                        {% endfor %} <!-- termina for(arreglo) -->
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
 </body>
 
 </html>
