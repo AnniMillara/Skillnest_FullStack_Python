@@ -336,9 +336,10 @@ def inicio():
 def saludo(nombre):
     return f"Hola {nombre}"
 
+# errores de navegación
 @app.errorhandler(404)
 def pagina_no_encontrada(error):
-    return "⚠️ Error 404 - Página no encontrada.", 404
+    return "Error 404 - Página no encontrada.", 404
 
 if __name__ == "__main__":
     app.run(debug=True)
