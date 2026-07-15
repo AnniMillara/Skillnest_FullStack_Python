@@ -6,10 +6,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ranking de Jugadores</title>
     <style>
-        body {
-            font-family: Arial, sans-serif;
-            background-color: {% if color %}{{ color }}{% else %}#f4f4f4{% endif %};
-            text-align: center;
+        body{
+            font-family:Arial, Helvetica, sans-serif;
+            background-color:
+            {% if color %}
+            {{ color }}
+            {% else %}
+            #f4f4f4
+            {% endif %};
+            text-align:center;
+            padding:40px;
         }
 
         h1 {
