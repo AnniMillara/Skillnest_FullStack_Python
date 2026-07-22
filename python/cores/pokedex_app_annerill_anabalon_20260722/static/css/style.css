@@ -1,0 +1,89 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: "Elms Sans", sans-serif;
+}
+
+/* encabezado con titulo */
+header {
+    padding-top: 10px;
+    display: flex;
+    justify-content: center;
+    font-size: 30px;
+}
+
+.hea-cont {
+    display: flex;
+    align-items: center;
+    color: #3C4DCA;
+    gap: 10px;
+}
+
+/* barra de navegacion */
+.nav-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+}
+
+.navb {
+    padding: 5px;
+    border: none;
+    color: #ffff;
+    border-radius: 5px;
+}
+
+.btn-blue {
+    background-color: #0D6EFD;
+}
+
+.btn-green {
+    background-color: #198754;
+}
+
+/* main - principaaaaal */
+/* me duele la cabezaaaaa */
+.container {
+    width: 1000px;
+    margin: 0 auto;
+    display: flex;
+    gap: 30px;
+    flex-wrap: wrap;
+}
+
+/* tarjetaas */
+.tarj {
+    display: flex;
+    flex-direction: column;
+    box-shadow:  2px 2px 5px 1px #7e7e7e;
+}
+
+
+/* colores tipos pokemones */
+.ti-p.planta {
+    background: #78C850;
+}
+
+/* verde */
+.ti-p.veneno {
+    background: #A040A0;
+}
+
+/* morado */
+.ti-p.fuego {
+    background: #F08030;
+}
+
+/* naranja */
+.ti-p.agua {
+    background: #6890F0;
+}
+
+/* azul */
+.ti-p.electrico {
+    background: #F8D030;
+}
+
+/* amarillo */

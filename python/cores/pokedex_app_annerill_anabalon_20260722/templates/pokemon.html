@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="author" content="annerillanabalon@liceovvh.cl">
+    <title>Pokedex</title>
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+        integrity="sha512-****** (copiar del CDN) ******" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    
+    {# archivo css #}
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+
+<body>
+    <header>
+        <div class="hea-cont">
+            <img src="{{ url_for('static', filename='images/pokebola.png') }}" alt="LogoPok" width="50">
+            <h1>Pokédex</h1>
+        </div>
+    </header>
+    <nav>
+        <div class="nav-container">
+            <p>Ver todos los Pokémon</p>
+            <div class="nav-btn">
+                <button class="navb btn-blue"><i class="bi bi-list-ul"></i> Ver todos</button>
+                <button class="navb btn-green"><i class="bi bi-funnel-fill"></i> Ver 5 primeros</button>
+            </div>
+        </div>
+    </nav>
+
+    <main>
+        <div class="container">
+            {% for pokemon in poke %}
+            <div class="tarj">
+                <div class="tar-head">
+                    <p class="ids">{{ pokemon.id }}</p>
+                    <img src="{{ url_for('static', filename='images/') }}" alt="pokemon" width="50">
+                </div>
+                <div class="tar-body">
+                    <h3>{{ pokemon.nombre }}</h3>
+                    <div class="tipo">
+                        {% for t in pokemon.tipo.split('/') %}
+                        <a href="#" class="ti-p {{ colores[t|lower] }}"></a>
+                        {% endfor %}
+                    </div>
+                    <div class="barra">
+                        <p><i class="bi bi-lightning-fill"></i> Poder</p>
+                        <div class="poder">
+                            <div class="fill" style="width: {{ pokemon.poder }}%"></div>
+                        </div>
+                    </div>
+                    <div class="datos">
+                        <div class="caj altu">
+                            <p><i class="fa-solid fa-ruler-vertical"></i> Altura</p>
+                            <p><strong>{{ pokemon.altura }}</strong></p>
+                        </div>
+                        <div class="caj peso">
+                            <p><i class="fa-solid fa-weight-hanging"></i> Peso</p>
+                            <p><strong>{{ pokemon.peso }}</strong></p>
+                        </div>
+                    </div>
+                    <a href="{{ url_for('detalle', id=pokemon.id) }}" class="btn detalles">Ver Detalles</a>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </main>
+    {# archivos de script #}
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+</body>
+
+</html>

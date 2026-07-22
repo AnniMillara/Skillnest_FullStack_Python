@@ -18,10 +18,30 @@ pokedex = [
 
 
 # Ruta para mostrar todos los Pokémon
-
+@app.route("/pokemon")
+def pokemon():
+    colores = {
+        "planta": "verde",
+        "veneno": "morado",
+        "fuego": "naranjo",
+        "agua": "azul",
+        "electrico": "amarillo",
+        "fantasma": "gris",
+        "roca": "cafe",
+        "tierra": "marron",
+        "normal": "gris",
+        "hada": "rosa"
+    }
+    return render_template("pokemon.html", poke=pokedex, colores=colores)
 # Ruta para mostrar un Pokémon por nombre
 
 # Ruta para mostrar un Pokémon por número en la Pokédex
+@app.route("/pokemon/<int:id>")
+def detalle(id):                     # ← *endpoint* = "detalle"
+    # Busca el Pokémon cuyo id coincida
+    pokemon = next((p for p in pokedex if p["id"] == id), None)
+    # Renderiza una plantilla que muestra los datos de ese Pokémon
+    return render_template("detalle.html", pokemon=pokemon)
 
 # Ruta para mostrar una cantidad específica de Pokémon
 
