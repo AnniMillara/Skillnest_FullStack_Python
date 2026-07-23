@@ -26,14 +26,19 @@ header {
     flex-direction: column;
     align-items: center;
     gap: 15px;
+    margin-bottom: 20px;
 }
 
 .navb {
-    padding: 5px;
+    display: inline-block;
+    /* agregado */
+    padding: 8px 12px;
+    /* modificado */
     border: none;
     color: #ffff;
     border-radius: 5px;
     margin-bottom: 20px;
+    text-decoration: none;
 }
 
 .btn-blue {
@@ -47,18 +52,20 @@ header {
 /* main - principaaaaal */
 /* me duele la cabezaaaaa */
 .container {
-    width: 1000px;
-    margin: 0 auto;
+    width: 90%;
+    max-width: 1000px;
+    margin: 0 auto 30px;
     display: flex;
+    justify-content: center;
     gap: 30px;
     flex-wrap: wrap;
 }
 
 /* tarjetaas */
 .tarj {
-    box-shadow: 0px 0px 5px 1px #7e7e7e;
-    border-radius: 15px;
     width: 300px;
+    border-radius: 15px;
+    box-shadow: 0px 0px 5px 1px #7e7e7e;
 }
 
 .tar-head {
@@ -72,7 +79,7 @@ header {
     overflow: hidden;
     border-radius: 15px 15px 0px 0px;
 
-    /* 15 líneas diagonales exactas que cambian de blanco a gris azulado */
+    /* 15 líneas diagonales que cambian de blanco a gris azulado */
     background: linear-gradient(135deg,
             #ffffff 0.00%, #ffffff 6.67%,
             #fbfcfd 6.67%, #fbfcfd 13.33%,
@@ -92,28 +99,15 @@ header {
 }
 
 .ids {
-    /* Al activar 'absolute', el elemento flota */
     position: absolute;
-
-    /* Lo empujamos a la esquina superior derecha */
     top: 12px;
-    /* Distancia desde el borde de arriba */
     right: 12px;
-    /* Distancia desde el borde derecho */
-
-    /* Diseño idéntico a la imagen */
     background-color: #4a5568;
-    /* Gris oscuro texturizado */
     color: #ffffff;
-    /* Texto blanco */
-    font-family: Arial, sans-serif;
     font-weight: bold;
     font-size: 13px;
-
-    /* Relleno interno para que se vea ovalado y espaciado */
     padding: 4px 10px;
     border-radius: 20px;
-    /* Bordes completamente redondeados */
 }
 
 .tarj-img {
@@ -199,7 +193,6 @@ header {
     color: #ffff;
     font-size: 10px;
 }
-
 /* se logro a la primeraaa!!!! */
 
 .grey {
@@ -231,4 +224,99 @@ header {
     width: 100%;
     color: #0D6EFD;
     border-radius: 5px;
+}
+
+/* pagina error */
+
+.error-page {
+    /* equivale exactamente al 100% de la altura de la ventana gráfica (viewport) */
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #F8F9FA;
+}
+
+.error {
+    width: 90%;
+    max-width: 500px;
+    padding: 40px;
+    text-align: center;
+}
+
+.error h1 {
+    color: #3C4DCA;
+    font-size: 60px;
+    margin-bottom: 15px;
+}
+
+.error p {
+    color: #555;
+    margin: 15px 0;
+    font-weight: normal;
+}
+
+.error p.mensaje {
+    font-size: 20px;
+    color: #000000;
+}
+
+.alert {
+    color: #dc3545 !important;
+    font-size: 28px;
+    font-weight: bold !important;
+}
+
+/* responsicividad */
+@media (max-width: 768px) {
+
+    header {
+        font-size: 24px;
+    }
+
+    .container {
+        width: 95%;
+    }
+
+    .datos {
+        width: 100%;
+    }
+
+    .error {
+        padding: 30px 20px;
+    }
+
+    .error h1 {
+        font-size: 50px;
+    }
+
+    .alert {
+        font-size: 24px;
+    }
+}
+
+@media (max-width: 480px) {
+
+    .hea-cont {
+        flex-direction: column;
+        gap: 5px;
+    }
+
+    .nav-container {
+        gap: 10px;
+    }
+
+    .navb {
+        display: block;
+        width: 100%;
+        text-align: center;
+    }
+
+    .error h1 {
+        font-size: 42px;
+    }
+
+    .alert {
+        font-size: 22px;
+    }
 }

@@ -13,7 +13,8 @@ pokedex = [
     {"id": 54, "nombre": "Psyduck", "tipo": "Agua", "imagen": "psyduck.png", "poder": 50, "altura": "0.8m", "peso": "19.6kg"},
     {"id": 94, "nombre": "Gengar", "tipo": "Fantasma/Veneno", "imagen": "gengar.png", "poder": 60, "altura": "1.5m", "peso": "40.5kg"},
     {"id": 95, "nombre": "Onix", "tipo": "Roca/Tierra", "imagen": "onix.png", "poder": 35, "altura": "8.8m", "peso": "210.0kg"},
-    {"id": 143, "nombre": "Snorlax", "tipo": "Normal", "imagen": "snorlax.png", "poder": 160, "altura": "2.1m", "peso": "460.0kg"}
+    {"id": 143, "nombre": "Snorlax", "tipo": "Normal", "imagen": "snorlax.png", "poder": 160, "altura": "2.1m", "peso": "460.0kg"},
+    {"id": 778, "nombre": "Mimikyu", "tipo": "Fantasma/Hada", "imagen": "mimi.png", "poder": 55, "altura": "0.2m", "peso": "0.7kg"}
 ]
 
 colores = {
@@ -33,27 +34,28 @@ colores = {
 @app.route("/")
 @app.route("/pokemon")
 def pokemon():
-    return render_template("pokemon.html", poke=pokedex, colores=colores)
+    return render_template("pokemon.html", poke=pokedex, colores=colores, titulo="Todos los pokémon")
 
 # Ruta para mostrar un Pokémon por nombre
-@app.route("/pokemon/nombre/<string:name>")
+@app.route("/pokemon/<string:name>")
 def nombre(name):
     for p in pokedex:
         if p["nombre"].lower() == name.lower():
-            return render_template("pokemon.html", poke=[p], colores=colores)
+            return render_template("pokemon.html", poke=[p], colores=colores, titulo=f"Pokemon {p["nombre"]}")
+    return pokemon_no_encontrado(name)
 
 # Ruta para mostrar un Pokémon por número en la Pokédex
 @app.route("/pokemon/<int:id>")
 def buscar(id):
     for p in pokedex:
         if p["id"] == id:
-            return render_template("pokemon.html", poke=[p], colores=colores)
-    return "Pokémon no encontrado"
+            return render_template("pokemon.html", poke=[p], colores=colores, titulo=f"Pokemon: {p["nombre"]}")
+    return pokemon_no_encontrado(id)
 
 # Ruta para mostrar una cantidad específica de Pokémon
 @app.route("/pokemon/cantidad/<int:cantidad>")
 def limit(cantidad):
-    return render_template("pokemon.html", poke=pokedex[:cantidad], colores=colores)
+    return render_template("pokemon.html", poke=pokedex[:cantidad], colores=colores, titulo=f"Primeros {cantidad} Pokémones")
         
 # Error cuando no se encuentra un Pokémon
 def pokemon_no_encontrado(mensaje: str):
