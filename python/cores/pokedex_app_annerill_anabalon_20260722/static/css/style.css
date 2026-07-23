@@ -33,6 +33,7 @@ header {
     border: none;
     color: #ffff;
     border-radius: 5px;
+    margin-bottom: 20px;
 }
 
 .btn-blue {
@@ -55,35 +56,179 @@ header {
 
 /* tarjetaas */
 .tarj {
-    display: flex;
-    flex-direction: column;
-    box-shadow:  2px 2px 5px 1px #7e7e7e;
+    box-shadow: 0px 0px 5px 1px #7e7e7e;
+    border-radius: 15px;
+    width: 300px;
 }
 
+.tar-head {
+    /* Control de tamaño y bordes */
+    width: 100%;
+    height: 150px;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    border-radius: 15px 15px 0px 0px;
+
+    /* 15 líneas diagonales exactas que cambian de blanco a gris azulado */
+    background: linear-gradient(135deg,
+            #ffffff 0.00%, #ffffff 6.67%,
+            #fbfcfd 6.67%, #fbfcfd 13.33%,
+            #f7f9fa 13.33%, #f7f9fa 20.00%,
+            #f3f5f8 20.00%, #f3f5f8 26.67%,
+            #eff2f6 26.67%, #eff2f6 33.33%,
+            #ebeff4 33.33%, #ebeff4 40.00%,
+            #e7ecf1 40.00%, #e7ecf1 46.67%,
+            #e4e8ef 46.67%, #e4e8ef 53.33%,
+            #e0e5ed 53.33%, #e0e5ed 60.00%,
+            #dce2ea 60.00%, #dce2ea 66.67%,
+            #d8dfe8 66.67%, #d8dfe8 73.33%,
+            #d4dce6 73.33%, #d4dce6 80.00%,
+            #d0d8e4 80.00%, #d0d8e4 86.67%,
+            #ccd5e1 86.67%, #ccd5e1 93.33%,
+            #c8d2df 93.33%, #c8d2df 100.00%);
+}
+
+.ids {
+    /* Al activar 'absolute', el elemento flota */
+    position: absolute;
+
+    /* Lo empujamos a la esquina superior derecha */
+    top: 12px;
+    /* Distancia desde el borde de arriba */
+    right: 12px;
+    /* Distancia desde el borde derecho */
+
+    /* Diseño idéntico a la imagen */
+    background-color: #4a5568;
+    /* Gris oscuro texturizado */
+    color: #ffffff;
+    /* Texto blanco */
+    font-family: Arial, sans-serif;
+    font-weight: bold;
+    font-size: 13px;
+
+    /* Relleno interno para que se vea ovalado y espaciado */
+    padding: 4px 10px;
+    border-radius: 20px;
+    /* Bordes completamente redondeados */
+}
+
+.tarj-img {
+    width: 100px;
+    height: auto;
+    align-self: center;
+}
+
+.tar-body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+    margin: 10px;
+}
+
+.ti-p {
+    color: #ffff;
+    font-weight: bold;
+    padding: 2px 5px;
+    border-radius: 10px;
+}
 
 /* colores tipos pokemones */
 .ti-p.planta {
     background: #78C850;
 }
 
-/* verde */
 .ti-p.veneno {
     background: #A040A0;
 }
 
-/* morado */
 .ti-p.fuego {
     background: #F08030;
 }
 
-/* naranja */
 .ti-p.agua {
     background: #6890F0;
 }
 
-/* azul */
-.ti-p.electrico {
-    background: #F8D030;
+.ti-p.normal {
+    background: #A8A878;
 }
 
-/* amarillo */
+.ti-p.hada {
+    background: #ED99AC;
+}
+
+.ti-p.roca {
+    background: #B8A038;
+}
+
+.ti-p.tierra {
+    background: #E0C068;
+}
+
+.ti-p.fantasma {
+    background: #705898;
+}
+
+.ti-p.electrico {
+    background: #F8D030;
+    color: #000000;
+}
+
+/* intento de barra de poder :( */
+.barra {
+    width: 100%;
+    margin: 0px 10px;
+}
+
+.poder {
+    background-color: #e2e2e2;
+    height: auto;
+    border-radius: 20px;
+}
+
+.fill {
+    background-color: #0D6EFD;
+    border-radius: 20px 0px 0px 20px;
+    padding: 2px 10px 0px;
+    height: 100%;
+    color: #ffff;
+    font-size: 10px;
+}
+
+/* se logro a la primeraaa!!!! */
+
+.grey {
+    color: #6C757D;
+    font-weight: bold;
+}
+
+.datos {
+    width: 70%;
+    display: flex;
+    justify-content: space-between;
+}
+
+.caj {
+    text-align: center;
+}
+
+.det {
+    background-color: #F8F9FA;
+    border-top: 1px solid #7e7e7e;
+    text-align: center;
+    padding: 5px 10px;
+}
+
+.detalles {
+    display: block;
+    text-decoration: none;
+    border: 1px solid #0D6EFD;
+    width: 100%;
+    color: #0D6EFD;
+    border-radius: 5px;
+}

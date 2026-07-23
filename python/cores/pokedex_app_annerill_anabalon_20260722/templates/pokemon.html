@@ -12,7 +12,7 @@
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
         integrity="sha512-****** (copiar del CDN) ******" crossorigin="anonymous" referrerpolicy="no-referrer" />
-    
+
     {# archivo css #}
     <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
 </head>
@@ -39,33 +39,36 @@
             {% for pokemon in poke %}
             <div class="tarj">
                 <div class="tar-head">
-                    <p class="ids">{{ pokemon.id }}</p>
-                    <img src="{{ url_for('static', filename='images/') }}" alt="pokemon" width="50">
+                    <p class="ids">#{{ pokemon.id }}</p>
+                    <img class="tarj-img" src="{{ url_for('static', filename='images/' + pokemon.imagen) }}"
+                        alt="pokemon{{ pokemon.nombre }}" width="100">
                 </div>
                 <div class="tar-body">
                     <h3>{{ pokemon.nombre }}</h3>
                     <div class="tipo">
                         {% for t in pokemon.tipo.split('/') %}
-                        <a href="#" class="ti-p {{ colores[t|lower] }}"></a>
+                        <span class="ti-p {{ colores[t.lower()] }}">{{ t }}</span>
                         {% endfor %}
                     </div>
                     <div class="barra">
-                        <p><i class="bi bi-lightning-fill"></i> Poder</p>
+                        <p class="grey"><i class="bi bi-lightning-fill"></i> Poder</p>
                         <div class="poder">
-                            <div class="fill" style="width: {{ pokemon.poder }}%"></div>
+                            <div class="fill" style="width: {{ pokemon.poder }}px">{{ pokemon.poder }}</div>
                         </div>
                     </div>
                     <div class="datos">
                         <div class="caj altu">
-                            <p><i class="fa-solid fa-ruler-vertical"></i> Altura</p>
+                            <p class="grey"><i class="fa-solid fa-ruler-vertical"></i> Altura</p>
                             <p><strong>{{ pokemon.altura }}</strong></p>
                         </div>
                         <div class="caj peso">
-                            <p><i class="fa-solid fa-weight-hanging"></i> Peso</p>
+                            <p class="grey"><i class="fa-solid fa-weight-hanging"></i> Peso</p>
                             <p><strong>{{ pokemon.peso }}</strong></p>
                         </div>
                     </div>
-                    <a href="{{ url_for('detalle', id=pokemon.id) }}" class="btn detalles">Ver Detalles</a>
+                </div>
+                <div class="det">
+                    <a href="{{ url_for('buscar', id=pokemon.id) }}" class="btn detalles">Ver Detalles</a>
                 </div>
             </div>
             {% endfor %}

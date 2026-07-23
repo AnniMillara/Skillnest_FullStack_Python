@@ -16,35 +16,45 @@ pokedex = [
     {"id": 143, "nombre": "Snorlax", "tipo": "Normal", "imagen": "snorlax.png", "poder": 160, "altura": "2.1m", "peso": "460.0kg"}
 ]
 
+colores = {
+        "planta": "planta",
+        "veneno": "veneno",
+        "fuego": "fuego",
+        "agua": "agua",
+        "eléctrico": "electrico",
+        "normal": "normal",
+        "hada": "hada",
+        "fantasma": "fantasma",
+        "roca": "roca",
+        "tierra": "tierra"
+    }
 
 # Ruta para mostrar todos los Pokémon
+@app.route("/")
 @app.route("/pokemon")
 def pokemon():
-    colores = {
-        "planta": "verde",
-        "veneno": "morado",
-        "fuego": "naranjo",
-        "agua": "azul",
-        "electrico": "amarillo",
-        "fantasma": "gris",
-        "roca": "cafe",
-        "tierra": "marron",
-        "normal": "gris",
-        "hada": "rosa"
-    }
     return render_template("pokemon.html", poke=pokedex, colores=colores)
+
 # Ruta para mostrar un Pokémon por nombre
+@app.route("/pokemon/nombre/<string:name>")
+def nombre(name):
+    for p in pokedex:
+        if p["nombre"].lower() == name.lower():
+            return render_template("pokemon.html", poke=[p], colores=colores)
 
 # Ruta para mostrar un Pokémon por número en la Pokédex
 @app.route("/pokemon/<int:id>")
-def detalle(id):                     # ← *endpoint* = "detalle"
-    # Busca el Pokémon cuyo id coincida
-    pokemon = next((p for p in pokedex if p["id"] == id), None)
-    # Renderiza una plantilla que muestra los datos de ese Pokémon
-    return render_template("detalle.html", pokemon=pokemon)
+def buscar(id):
+    for p in pokedex:
+        if p["id"] == id:
+            return render_template("pokemon.html", poke=[p], colores=colores)
+    return "Pokémon no encontrado"
 
 # Ruta para mostrar una cantidad específica de Pokémon
-
+@app.route("/pokemon/cantidad/<int:cantidad>")
+def limit(cantidad):
+    return render_template("pokemon.html", poke=pokedex[:cantidad], colores=colores)
+        
 # Error cuando no se encuentra un Pokémon
 def pokemon_no_encontrado(mensaje: str):
     """Función simple para renderizar la página 404 con un mensaje."""
