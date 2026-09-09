@@ -23,9 +23,8 @@ class Mascota:
         query = "SELECT * FROM mascotas;"
         resultados = connectToMySQL("primera_flask").query_db(query)
 
-        # Si ocurrió un error, resultados será False
         if not resultados:
-            return []  # o podrías lanzar una excepción, pero devolvemos lista vacía
+            return []
 
         mascotas = []
         for registro in resultados:
@@ -44,5 +43,38 @@ class Mascota:
 
         if resultados:
             return cls(resultados[0])
-        else:
-            return None
+        return None
+
+    # ACTIVIDAD DE CONSOLIDACIÓN: buscar por nombre
+    @classmethod
+    def get_by_name(cls, nombre):
+        """
+        Busca una mascota por su nombre exacto.
+        Retorna un objeto Mascota o None si no existe.
+        """
+        query = "SELECT * FROM mascotas WHERE nombre = %(nombre)s;"
+        data = {"nombre": nombre}
+        resultados = connectToMySQL("primera_flask").query_db(query, data)
+
+        if resultados:
+            return cls(resultados[0])
+        return None
+
+    # DESAFÍO: buscar por tipo (devuelve lista)
+    @classmethod
+    def get_by_tipo(cls, tipo):
+        """
+        Busca todas las mascotas de un tipo determinado.
+        Retorna una lista de objetos Mascota.
+        """
+        query = "SELECT * FROM mascotas WHERE tipo = %(tipo)s;"
+        data = {"tipo": tipo}
+        resultados = connectToMySQL("primera_flask").query_db(query, data)
+
+        if not resultados:
+            return []
+
+        mascotas = []
+        for registro in resultados:
+            mascotas.append(cls(registro))
+        return mascotas
