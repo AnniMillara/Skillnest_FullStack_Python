@@ -25,7 +25,7 @@ def ver_mascota(id):
     else:
         return "Mascota no encontrada", 404
 
-# NUEVA RUTA: buscar por nombre (actividad)
+# RUTA: buscar por nombre (actividad)
 @app.route("/mascota/nombre/<string:nombre>")
 def ver_mascota_por_nombre(nombre):
     mascota = Mascota.get_by_name(nombre)
@@ -34,13 +34,13 @@ def ver_mascota_por_nombre(nombre):
     else:
         return f"No se encontró ninguna mascota con el nombre '{nombre}'", 404
 
-# NUEVA RUTA: buscar por tipo (desafío)
+# RUTA: buscar por tipo (desafío genérico)
 @app.route("/mascotas/tipo/<string:tipo>")
 def listar_mascotas_por_tipo(tipo):
     mascotas = Mascota.get_by_tipo(tipo)
     return render_template("mascotas_por_tipo.html", tipo=tipo, mascotas=mascotas)
 
-#NUEVA RUTA PARA EL DESAFÍO ESPECÍFICO
+# ===== NUEVA RUTA PARA EL DESAFÍO ESPECÍFICO =====
 @app.route("/mascotas/perros")
 def listar_perros():
     mascotas = Mascota.get_by_tipo("Perro")
