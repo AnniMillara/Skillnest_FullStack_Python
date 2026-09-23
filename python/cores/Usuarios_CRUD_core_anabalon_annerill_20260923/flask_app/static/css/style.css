@@ -1,0 +1,21 @@
+body {
+    background-color: #f2f4f7;
+    color: #1e293b;
+    font-family: "Segoe UI", Arial, sans-serif;
+}
+
+h1 {
+    font-weight: 700;
+}
+
+.card {
+    border-radius: 12px;
+}
+
+.form-control {
+    border-radius: 6px;
+}
+
+.btn {
+    border-radius: 6px;
+}
