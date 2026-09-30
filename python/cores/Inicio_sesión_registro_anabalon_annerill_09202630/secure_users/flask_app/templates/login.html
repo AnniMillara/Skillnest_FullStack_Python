@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sesión</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playpen+Sans:wght@100..800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+
+<body>
+    <div class="container">
+        {% with messages = get_flashed_messages(with_categories=true) %}
+        {% for category, message in messages %}
+        <div class="alert alert-{{ category }} mb-3">{{ message }}</div>
+        {% endfor %}
+        {% endwith %}
+
+        <div class="row g-4">
+            {# REGISTRO #}
+            <div class="col-md-6">
+                <div class="sketch-box">
+                    <h2>Registro</h2>
+                    <form action="{{ url_for('inscribir') }}" method="POST">
+                        <div class="form-row">
+                            <label for="nombre">Nombre</label>
+                            <input type="text" id="nombre" name="nombre" class="form-control" maxlength="45" required>
+                        </div>
+
+                        <div class="form-row">
+                            <label for="apellido">Apellido</label>
+                            <input type="text" id="apellido" name="apellido" class="form-control" maxlength="45" required>
+                        </div>
+
+                        <div class="form-row">
+                            <label for="email_registro">E-mail</label>
+                            <input type="email" id="email_registro" name="email" class="form-control" maxlength="45" required>
+                        </div>
+
+                        <div class="form-row">
+                            <label for="password_registro">Contraseña</label>
+                            <input type="password" id="password_registro" name="contrasena" class="form-control" maxlength="45" required>
+                        </div>
+
+                        <div class="actions">
+                            <button type="submit" class="btn">Registrar</button>
+                            <a href="{{ url_for('inicio') }}" class="btn">Cancelar</a>
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+            {# INICIO DE SESIÓN #}
+            <div class="col-md-6">
+                <div class="sketch-box">
+                    <h2>Inicio de Sesión</h2>
+                    <form action="{{ url_for('ingresar') }}" method="POST">
+                        <div class="form-row">
+                            <label for="email_login">E-mail</label>
+                            <input type="email" id="email_login" name="email" class="form-control" maxlength="45" required>
+                        </div>
+
+                        <div class="form-row">
+                            <label for="password_login">Contraseña</label>
+                            <input type="password" id="password_login" name="contrasena" class="form-control" maxlength="45" required>
+                        </div>
+
+                        <div class="actions">
+                            <button type="submit" class="btn">Iniciar Sesión</button>
+                            <a href="{{ url_for('inicio') }}" class="btn">Cancelar</a>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

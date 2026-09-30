@@ -1,0 +1,20 @@
+-- ==========================================================
+-- BASE DE DATOS
+-- ==========================================================
+
+DROP DATABASE IF EXISTS esquema_usuarios;
+CREATE DATABASE IF NOT EXISTS esquema_usuarios;
+USE esquema_usuarios;
+
+-- TABLA USUARIOS
+
+CREATE TABLE IF NOT EXISTS usuarios (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    nombre VARCHAR(100) NOT NULL,
+    apellido VARCHAR(100) NOT NULL,
+    email VARCHAR(100) NOT NULL UNIQUE,
+    contrasena VARCHAR(225) NOT NULL,
+    created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
+    updated_at DATETIME DEFAULT CURRENT_TIMESTAMP
+        ON UPDATE CURRENT_TIMESTAMP
+);
