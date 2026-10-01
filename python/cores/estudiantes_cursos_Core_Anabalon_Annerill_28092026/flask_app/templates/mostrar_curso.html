@@ -1,0 +1,45 @@
+{% extends "base.html" %}
+
+{% block title %}
+Curso de {{ curso.nombre }}
+{% endblock %}
+
+{% block content %}
+<div class="container">
+    <h1>Estudiantes de {{ curso.nombre }}</h1>
+
+    <div class="table-container">
+        {% if estudiantes %}
+        <table>
+            <thead>
+                <tr>
+                    <th>Nombre</th>
+                    <th>Apellido</th>
+                    <th>Edad</th>
+                    <th>Acciones</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for estudiante in estudiantes %}
+                <tr>
+                    <td>{{ estudiante.nombre }}</td>
+                    <td>{{ estudiante.apellido }}</td>
+                    <td>{{ estudiante.edad }}</td>
+                    <td>
+                        <a href="{{ url_for('eliminar_estudiante', id=estudiante.id_estudiante) }}"
+                            onclick="return confirm('¿Eliminar este estudiante?');">
+                            Eliminar
+                        </a>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        {% else %}
+        <span>No hay estudiantes en este curso... ¯\_(ツ)_/¯</span>
+        {% endif %}
+    </div>
+
+    <a href="{{ url_for('cursos') }}">Volver al inicio 🏠︎</a>
+</div>
+{% endblock %}

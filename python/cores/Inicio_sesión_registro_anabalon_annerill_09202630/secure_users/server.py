@@ -9,7 +9,7 @@ from flask_app import app
 # utilizando la instancia "app".
 # ==========================================================
 
-from flask_app.controllers import usuarios
+from python.cores.Inicio_sesión_registro_anabalon_annerill_09202630.secure_users.flask_app.controllers import usuarios
 
 # EJECUTAR SERVIDOR
 if __name__ == "__main__":

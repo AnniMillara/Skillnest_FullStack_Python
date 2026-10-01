@@ -5,7 +5,7 @@ USE esquema_estudiantes_cursos;
 
 CREATE TABLE IF NOT EXISTS cursos(
 	id_curso INT PRIMARY KEY AUTO_INCREMENT UNIQUE NOT NULL,
-	nombre   VARCHAR(45) NOT NULL,
+	nombre   VARCHAR(45) NOT NULL UNIQUE,
     created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
     updated_at DATETIME DEFAULT CURRENT_TIMESTAMP
         ON UPDATE CURRENT_TIMESTAMP
@@ -17,7 +17,7 @@ CREATE TABLE IF NOT EXISTS estudiantes(
     apellido       VARCHAR(45) NOT NULL,
     edad           INT NOT NULL,
 	curso_id       INT,
-	FOREIGN KEY (curso_id) REFERENCES curso(id_curso)
+	FOREIGN KEY (curso_id) REFERENCES cursos(id_curso)
         ON DELETE CASCADE ON UPDATE CASCADE,
     created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
     updated_at DATETIME DEFAULT CURRENT_TIMESTAMP

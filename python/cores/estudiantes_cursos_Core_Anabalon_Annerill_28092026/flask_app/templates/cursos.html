@@ -1,0 +1,42 @@
+{% extends "base.html" %}
+
+{% block title %}
+Cursos
+{% endblock %}
+
+{% block content %}
+<div class="container">
+    <div class="row row1">
+        <h2>Nuevo Curso</h2>
+        <form action="{{url_for('ingresar_curso')}}" method="POST">
+            <div class="formulario-container">
+                <label for="nombre">Nombre</label>
+                <input type="text" id="nombre" name="nombre" class="form-control" required>
+            </div>
+            <button type="submit">ingresar</button>
+        </form>
+    </div>
+    <div class="row row2">
+        <div class="cursos-targ">
+            {% if cursos %}
+            <ul>
+                {% for curso in cursos %}
+                <li>
+                    <a href="{{url_for('mostrar_curso', id = curso.id_curso)}}">
+                        {{ curso.nombre }}
+                    </a>
+                    <a href="{{url_for('eliminar_curso', id = curso.id_curso)}}"
+                        onclick="return confirm('¿Eliminar este curso?');">
+                        Eliminar
+                    </a>
+                </li>
+                {% endfor %}
+            </ul>
+            {% else %}
+            <span>No existen cursos registrados hasta el momento. (｡ᵕ ◞ _◟)</span>
+            {% endif %}
+        </div>
+        <a href="{{url_for('nuevo_estudiante')}}">Agregar estudiantes</a>
+    </div>
+</div>
+{% endblock %}
