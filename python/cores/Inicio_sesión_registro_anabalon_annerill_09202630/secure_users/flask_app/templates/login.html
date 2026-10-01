@@ -21,7 +21,6 @@
         {% endwith %}
 
         <div class="row g-4">
-            {# REGISTRO #}
             <div class="col-md-6">
                 <div class="sketch-box">
                     <h2>Registro</h2>
@@ -46,6 +45,11 @@
                             <input type="password" id="password_registro" name="contrasena" class="form-control" maxlength="45" required>
                         </div>
 
+                        <div class="form-row">
+                            <label for="confirmar_contrasena">Confirmar Contraseña</label>
+                            <input type="password" id="confirmar_contrasena" name="confirmar_contrasena" class="form-control" maxlength="45" required>
+                        </div>
+
                         <div class="actions">
                             <button type="submit" class="btn">Registrar</button>
                             <a href="{{ url_for('inicio') }}" class="btn">Cancelar</a>
@@ -54,7 +58,6 @@
                 </div>
             </div>
 
-            {# INICIO DE SESIÓN #}
             <div class="col-md-6">
                 <div class="sketch-box">
                     <h2>Inicio de Sesión</h2>
