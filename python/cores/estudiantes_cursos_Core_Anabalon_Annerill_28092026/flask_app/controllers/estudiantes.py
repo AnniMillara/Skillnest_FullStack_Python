@@ -54,6 +54,21 @@ def ingresar_estudiante():
     
     return redirect(url_for("cursos"))
 
+@app.route("/estudiantes/editar/<int:id>")
+def editar_estudiante(id):
+    estudiante = Estudiantes.buscar_id(id)
+    
+    if not estudiante:
+        flash("El estudiante no existe.", "danger")
+        return redirect(url_for("cursos"))
+    
+    cursos = Cursos.todos()
+    
+    return render_template(
+        "editar_estudiante.html",
+        estudiante = estudiante,
+        cursos = cursos
+    )
 
 @app.route("/estudiantes/modificar/<int:id>", methods = ["POST"])
 def actualizar_estudiante(id):

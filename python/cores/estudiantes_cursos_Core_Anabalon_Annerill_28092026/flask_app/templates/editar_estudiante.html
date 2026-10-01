@@ -1,0 +1,55 @@
+{% extends "base.html" %}
+
+{% block title %}Editar Estudiante{% endblock %}
+
+{% block content %}
+
+<h1 class="text-center mb-5">Editar Estudiante</h1>
+
+<div class="row justify-content-center">
+    <div class="col-md-6">
+
+        <form action="{{ url_for('actualizar_estudiante', id=estudiante.id_estudiante) }}" method="POST">
+
+            <div class="mb-3">
+                <label for="curso" class="form-label">Curso</label>
+                <select name="curso_id" id="curso" class="form-select" required>
+                    {% for curso in cursos %}
+                        <option value="{{ curso.id_curso }}"
+                            {% if curso.id_curso == estudiante.curso_id %}selected{% endif %}>
+                            {{ curso.nombre }}
+                        </option>
+                    {% endfor %}
+                </select>
+            </div>
+
+            <div class="mb-3">
+                <label for="nombre" class="form-label">Nombre</label>
+                <input type="text" id="nombre" name="nombre" class="form-control"
+                       value="{{ estudiante.nombre }}" required>
+            </div>
+
+            <div class="mb-3">
+                <label for="apellido" class="form-label">Apellido</label>
+                <input type="text" id="apellido" name="apellido" class="form-control"
+                       value="{{ estudiante.apellido }}" required>
+            </div>
+
+            <div class="mb-3">
+                <label for="edad" class="form-label">Edad</label>
+                <input type="number" id="edad" name="edad" class="form-control"
+                       value="{{ estudiante.edad }}" min="1" required>
+            </div>
+
+            <button type="submit" class="btn btn-dark">Guardar cambios</button>
+
+        </form>
+
+        <div class="text-center mt-4">
+            <a href="{{ url_for('cursos') }}">Inicio</a>
+        </div>
+
+    </div>
+</div>
+
+{% endblock %}

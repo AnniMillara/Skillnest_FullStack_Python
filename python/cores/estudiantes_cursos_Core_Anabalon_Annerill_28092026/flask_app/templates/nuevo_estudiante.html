@@ -1,48 +1,50 @@
 {% extends "base.html" %}
 
-{% block title %}
-Nuevo estudiante 𐀪
-{% endblock %}
+{% block title %}Nuevo Estudiante{% endblock %}
 
 {% block content %}
-<div class="container">
-    <h2>Nuevo estudiante</h2>
 
-    <form action="{{ url_for('ingresar_estudiante') }}" method="POST">
-        <div class="formulario-container">
-            {# curso #}
-            <div class="lainp">
-                <label for="curso">Curso</label>
-                <select name="curso_id" id="curso" class="form-control" required>
-                    <option value="">-- Selecciona un curso --</option>
+<h1 class="text-center mb-5">Nuevo Estudiante</h1>
+
+<div class="row justify-content-center">
+    <div class="col-md-6">
+
+        <form action="{{ url_for('ingresar_estudiante') }}" method="POST">
+
+            <div class="mb-3">
+                <label for="curso" class="form-label">Curso</label>
+                <select name="curso_id" id="curso" class="form-select" required>
+                    <option value="" disabled selected>Selecciona un curso</option>
                     {% for curso in cursos %}
-                    <option value="{{ curso.id_curso }}">{{ curso.nombre }}</option>
+                        <option value="{{ curso.id_curso }}">{{ curso.nombre }}</option>
                     {% endfor %}
                 </select>
             </div>
 
-            {# nombre #}
-            <div class="lainp">
-                <label for="nombre">Nombre</label>
+            <div class="mb-3">
+                <label for="nombre" class="form-label">Nombre</label>
                 <input type="text" id="nombre" name="nombre" class="form-control" required>
             </div>
 
-            {# apellido #}
-            <div class="lainp">
-                <label for="apellido">Apellido</label>
+            <div class="mb-3">
+                <label for="apellido" class="form-label">Apellido</label>
                 <input type="text" id="apellido" name="apellido" class="form-control" required>
             </div>
 
-            {# edad #}
-            <div class="lainp">
-                <label for="edad">Edad</label>
-                <input type="number" id="edad" name="edad" class="form-control" required min="1">
+            <div class="mb-3">
+                <label for="edad" class="form-label">Edad</label>
+                <input type="number" id="edad" name="edad" class="form-control" min="1" required>
             </div>
 
-            <button type="submit" class="btn btn-primary">Guardar estudiante</button>
-        </div>
-    </form>
+            <button type="submit" class="btn btn-dark">Crear</button>
 
-    <a href="{{ url_for('cursos') }}">Volver al inicio 🏠︎</a>
+        </form>
+
+        <div class="text-center mt-4">
+            <a href="{{ url_for('cursos') }}">Inicio</a>
+        </div>
+
+    </div>
 </div>
+
 {% endblock %}
