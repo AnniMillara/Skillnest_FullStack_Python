@@ -24,10 +24,10 @@
             <td>{{ estudiante.edad }}</td>
             <td>
                 <a href="{{ url_for('editar_estudiante', id=estudiante.id_estudiante) }}"
-                   class="btn btn-sm btn-outline-dark">Editar</a>
+                    class="btn btn-sm btn-outline-dark">Editar</a>
                 <a href="{{ url_for('eliminar_estudiante', id=estudiante.id_estudiante) }}"
-                   class="btn btn-sm btn-outline-dark"
-                   onclick="return confirm('¿Eliminar este estudiante?');">Eliminar</a>
+                    class="btn btn-sm btn-outline-dark"
+                    onclick="return confirm('¿Eliminar este estudiante?');">Eliminar</a>
             </td>
         </tr>
         {% endfor %}

@@ -5,10 +5,8 @@
 {% block content %}
 
 <h1 class="text-center mb-5">Cursos</h1>
-
 <div class="row g-5">
 
-    {# ---------------- Columna izquierda: Nuevo Curso ---------------- #}
     <div class="col-md-5">
         <h2 class="h5 mb-3">Nuevo Curso</h2>
 
@@ -21,27 +19,24 @@
         </form>
     </div>
 
-    {# ---------------- Columna derecha: Todos los Cursos ---------------- #}
     <div class="col-md-7">
         <h2 class="h5 mb-3">Todos los Cursos</h2>
 
         <div class="lista-cursos">
             {% if cursos %}
-                {% for curso in cursos %}
-                <div class="curso-item">
-                    <a href="{{ url_for('mostrar_curso', id=curso.id_curso) }}"
-                       class="curso-nombre">
-                        {{ curso.nombre }}
-                    </a>
-                    <div class="curso-acciones">
-                        <a href="{{ url_for('eliminar_curso', id=curso.id_curso) }}"
-                           class="btn btn-sm btn-outline-dark"
-                           onclick="return confirm('¿Eliminar este curso?');">Eliminar</a>
-                    </div>
+            {% for curso in cursos %}
+            <div class="curso-item">
+                <a href="{{ url_for('mostrar_curso', id=curso.id_curso) }}" class="curso-nombre">
+                    {{ curso.nombre }}
+                </a>
+                <div class="curso-acciones">
+                    <a href="{{ url_for('eliminar_curso', id=curso.id_curso) }}" class="btn btn-sm btn-outline-dark"
+                        onclick="return confirm('¿Eliminar este curso?');">Eliminar</a>
                 </div>
-                {% endfor %}
+            </div>
+            {% endfor %}
             {% else %}
-                <span class="text-muted fst-italic">Aún no hay cursos registrados.</span>
+            <span class="text-muted fst-italic">Aún no hay cursos registrados.</span>
             {% endif %}
         </div>
 
